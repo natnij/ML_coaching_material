@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>session9 answer to homework</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h3>Homework</h3>
+<p>Please finish as far down the list as possible (you don't have to finish all of them), and bring your results and questions to session 9, on the 21. Mar:</p>
+<ol>
+<li>
+<p>load iris data, visualize distribution of petal length, by species: </p>
+<pre><code>import pandas as pd
+import numpy as np
+from sklearn.datasets import load_iris
+
+def loadData():
+    iris = load_iris()
+    featureData = pd.DataFrame(iris.data, columns=iris.feature_names)
+    targetData = pd.DataFrame(iris.target,columns=['species'])
+    irisData = pd.concat([featureData,targetData],axis=1)
+    return irisData
+
+irisdata = loadData()
+</code></pre>
+
+</li>
+<li>
+<p>fill in missing data with a simple imputer</p>
+<pre><code>from sklearn.impute import SimpleImputer
+
+def impute(data,features,strategy='most_frequent'):
+    cols = data.columns
+    if strategy not in ['mean','median','most_frequent']:
+        strategy == 'most_frequent'
+    data = SimpleImputer(missing_values=np.nan,strategy=strategy).fit_transform(data[features])
+    return pd.DataFrame(data,columns=cols)
+
+features = list(irisdata.columns)
+irisdata = impute(irisdata, features)
+</code></pre>
+
+</li>
+<li>
+<p>mark the records whose petal length is outside of +-4 standard deviations from the mean, as potential outliers. since nsigma=4 returns an empty dataframe, we test the function with 2 sigmas:</p>
+<pre><code>def nsigma_outlier(data,feature=&quot;sepal width (cm)&quot;,species=0,nsigma=4):
+        values = data[feature]
+        threshold_pos = np.mean(values) + nsigma * np.std(values)
+        threshold_neg = np.mean(values) - nsigma * np.std(values)
+        outlier = data.loc[(data.species==species) &amp; (
+                    (data[feature]&gt;threshold_pos) | 
+                    (data[feature]&lt;threshold_neg) ), :]
+        return outlier
+
+outlier = nsigma_outlier(irisdata,nsigma=2)
+print(outlier)
+</code></pre>
+
+<p>You can do the same with other species, other features and other n-sigmas.</p>
+</li>
+<li>
+<p>show boxplot of petal length, by species</p>
+<pre><code>import matplotlib.pyplot as plt
+import seaborn as sns
+
+sns.boxplot(x=&quot;species&quot;, y=&quot;petal length (cm)&quot;, data=irisdata)
+</code></pre>
+
+</li>
+<li>
+<p>use k-means (cluster algorithm, sklearn.cluster.KMeans) to fit only the feature data, and get the position of cluster centers.</p>
+<pre><code>from sklearn.cluster import KMeans
+
+def get_kmeans_centers(data,n_clusters=3):
+    km = KMeans(n_clusters=n_clusters)
+    km.fit(data.iloc[:,0:4])
+    centers = km.cluster_centers_
+    # km.predict(data.iloc[:,0:4])
+    # labels = km.labels_
+    return centers
+
+print(get_kmeans_centers(irisdata))
+</code></pre>
+
+</li>
+<li>
+<p>write a function that calculates the distance between any two data records, regardless of its dimension:</p>
+<pre><code>def calDistance_simple(row1,row2):
+    # element-wise square
+    sq = (row1 - row2)**2
+    # sum of squares
+    sm = np.sum(sq)
+    # distance is the square root of sum
+    distance = np.sqrt(sm)
+    return distance
+
+row1 = np.array(irisData.iloc[0][0:4])
+row2 = np.array(irisData.iloc[1][0:4])
+print(calDistance_simple(row1,row2))
+</code></pre>
+
+</li>
+<li>
+<p>extend this function to have &quot;row2&quot; as a n-dimensional array, each row is a possible cluster center, as formatted in step 5. Return the <strong>shortest</strong> distance between &quot;row1&quot; and any of the centers in &quot;row2&quot;.</p>
+<pre><code>def calDistance(dataRow, centers):
+    row = np.array(dataRow[0:4])
+    distances = []
+    for center in centers:
+        distances.append(calDistance_simple(row, center))
+    return min(distances)
+
+centers = get_kmeans_centers(irisdata)
+print(centers)
+</code></pre>
+
+</li>
+<li>
+<p>mark the records with the longest distance to any cluster center as potential outliers.</p>
+<pre><code>irisdata['distance'] = irisdata.apply(lambda row: calDistance(row,centers),axis=1)
+irisdata = irisdata.sort_values('distance',ascending=False)
+</code></pre>
+
+</li>
+<li>
+<p>make a decision what outliers you want to drop, and drop these rows.</p>
+<pre><code>def dropOutliers(data,n_clusters=None,n_outliers=5):
+    if n_clusters is None:
+        n_clusters = len(set(data['species']))
+    centers = get_kmeans_centers(data,n_clusters=n_clusters)
+    data['distance'] = data.apply(lambda row: calDistance(row, centers), axis=1)
+    data = data.sort_values('distance',ascending=False)
+    data = data.iloc[n_outliers:]
+    return data
+
+irisdata = dropOutliers(data=irisdata,n_outliers=5)
+</code></pre>
+
+</li>
+<li>
+<p>scale the first two features between 0 and 1, and the rest of features to mean=0 and variance=1.</p>
+<pre><code>from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+def scale(data,features,scaler):
+    data[features] = scaler.fit_transform(data[features])
+    return data
+
+scaler = MinMaxScaler()
+features = list(irisdata.columns)[0:2]
+irisdata = scale(irisdata,features,scaler)
+scaler = StandardScaler()
+features = list(irisdata.columns)[2:4]
+irisdata = scale(irisdata,features,scaler)
+</code></pre>
+
+</li>
+</ol>
+<p>Optional: look into Python pipelines: https://towardsdatascience.com/how-to-use-sklearn-pipelines-for-ridiculously-neat-code-a61ab66ca90d</p>
+<p>Make sure you get familiar with using the pipeline for 1).preprocessing, 2).model selection, 3).grid search: </p>
+<ol>
+<li>
+<p>execute the preprocessing steps in step2 and 10 as a pipeline for imputing and scaling data.</p>
+<pre><code>from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+
+irisdata = loadData()
+pipe_first2 = Pipeline(steps=[
+    ('impute', SimpleImputer(missing_values=np.nan,strategy='most_frequent')),
+    ('minmaxscaler', MinMaxScaler())
+])
+pipe_last2 = Pipeline(steps=[
+    ('impute', SimpleImputer(missing_values=np.nan,strategy='most_frequent')),
+    ('standardscaler', StandardScaler())
+])
+pipe = ColumnTransformer(transformers=[
+    ('first2', pipe_first2, list(irisdata.columns)[0:2]),
+    ('last2', pipe_last2, list(irisdata.columns)[2:4])
+])
+df = pipe.fit_transform(irisdata)
+print(df.head())
+</code></pre>
+
+</li>
+<li>
+<p>write a customized function for dropping <code>n_outliers = 5</code> outliers via KMeans, the customized function should be a class that can be instantiated by <code>MyOutlierDetection(n_outliers)</code>:</p>
+<pre><code>class MyOutlierDetection():
+    def __init__(self,n_clusters=None,n_outliers=5,targetCol=-1):
+        self.n_clusters = n_clusters
+        self.n_outliers = n_outliers
+        self.targetCol = targetCol
+
+    def fit(self, x, y):
+        y = x[:,self.targetCol].reshape(-1,)
+        x_ = np.delete(x,self.targetCol,axis=1)
+        if self.n_clusters is None:
+            self.n_clusters = len(set(y))
+        self.km = KMeans(n_clusters=self.n_clusters)
+        self.km.fit(x_)
+        self.centers = self.km.cluster_centers_
+        return self
+
+    def transform(self, x):
+        x_ = np.delete(x,self.targetCol,axis=1)
+        distance = np.apply_along_axis(func1d=self.calDistance, axis=1, arr=x_)
+        self.outlierIdx = np.argpartition(distance, self.n_outliers)[0:self.n_outliers]
+        return np.delete(arr=x,obj=self.outlierIdx,axis=0)
+
+    def calDistance(self,vec):
+        distances = []
+        for center in self.centers:
+            distances.append(np.sqrt(np.sum((vec-center) * (vec-center))))
+        return min(distances)
+</code></pre>
+
+</li>
+<li>
+<p>realize steps 2, 5-9, and 10 as a pipeline with </p>
+<ol>
+<li><code>SimpleImputer()</code>, </li>
+<li>the customized function <code>MyOutlierDetection(n_outliers)</code>, and </li>
+<li><code>StandardScaler()</code> for all four features. </li>
+</ol>
+<p>Some help for the customized pipeline function <a href="https://towardsdatascience.com/pipelines-custom-transformers-in-scikit-learn-the-step-by-step-guide-with-python-code-4a7d9b068156">here</a>.</p>
+<pre><code>irisdata = loadData()
+pipe = Pipeline(steps=[
+    ('impute', SimpleImputer(missing_values=np.nan,strategy='most_frequent')),
+    ('outlier', MyOutlierDetection()),
+    ('standardscaler', StandardScaler())
+    ])
+df = pipe.fit_transform(np.array(irisdata))
+</code></pre>
+
+</li>
+<li>
+<p>realize steps 2, 5-9, and 10 as a pipeline with</p>
+<ul>
+<li>SimpleImputer(),</li>
+<li>he customized function <code>MyOutlierDetection(n_outliers)</code>, and</li>
+<li>MinMaxScaler() for the first two features and StandardScaler() for the last two features.</li>
+</ul>
+<p>Some help for the customized pipeline function <a href="https://towardsdatascience.com/pipelines-custom-transformers-in-scikit-learn-the-step-by-step-guide-with-python-code-4a7d9b068156">here</a>.</p>
+<pre><code>irisdata = loadData()
+pipe1 = Pipeline(steps=[
+    ('impute', SimpleImputer(missing_values=np.nan,strategy='most_frequent')),
+    ('outlier', MyOutlierDetection())
+    ])
+pipe2 = ColumnTransformer(transformers=[
+    ('first2', MinMaxScaler(), [0,1]),
+    ('last2', StandardScaler(), [2,3])
+])
+pipe = Pipeline(steps=[
+    ('pipe1', pipe1),
+    ('pipe2', pipe2)
+])
+df = pipe.fit_transform(np.array(irisdata))
+</code></pre>
+
+</li>
+</ol>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
