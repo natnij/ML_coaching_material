@@ -44,6 +44,7 @@ The files include:
 
 - [RNN for timeseries II](https://htmlpreview.github.io/?https://github.com/natnij/ML_coaching_material/blob/main/material/lstm_pytorch2.html): build a more complete model with multiple layers in pytorch, and test it with the timeseries exercise.
 
+- [Transformer with hugging face](https://htmlpreview.github.io/?https://github.com/natnij/ML_coaching_material/blob/main/material/huggingface.html): build a very simple German-to-English translator with pretrained model from huggingface. 
 
 ### Final project example
 
