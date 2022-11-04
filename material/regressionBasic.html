@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>regressionBasic</title><script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<title>regressionBasic</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -15343,9 +15343,50 @@ jp-needs-light-background
 <p>What we just did, to split into training and test set, is the <strong>hold-out</strong> method in cross validation.</p>
 <p>Another common cross-validation method is <strong>K-fold</strong>. We divide the training set into portions, train on e.g., 9/10 th of the data and validate on the remaining 1 portion, and train again with different remaining portions. the model performance will be the average of the ten runs.</p>
 <p>For classification problems, if the data has minority classes, we need to make sure that the minority classes are present in the training set. This is called the <strong>stratified K-fold</strong>. But since we are doing regression, we omit this part.</p>
-<p>A good overview here: <a href="https://www.analyticsvidhya.com/blog/2021/05/4-ways-to-evaluate-your-machine-learning-model-cross-validation-techniques-with-python-code/">https://www.analyticsvidhya.com/blog/2021/05/4-ways-to-evaluate-your-machine-learning-model-cross-validation-techniques-with-python-code/</a></p>
-<p>At the end of this post, there is a very good discussion on bias-variance tradeoff of the cross-validation methods, it is extra of the extra, but definitely worth a closer look.</p>
 <p>In sklearn, cross_val_score offers calculation of different metrics. Because sklearn in general maximizes scores, so in the cases of merics that need to be minimized, they add a negative sign in front of it. The actual score is just the positive version. Details here: <a href="https://scikit-learn.org/stable/modules/model_evaluation.html">https://scikit-learn.org/stable/modules/model_evaluation.html</a></p>
+<p>A good overview here: <a href="https://www.analyticsvidhya.com/blog/2021/05/4-ways-to-evaluate-your-machine-learning-model-cross-validation-techniques-with-python-code/">https://www.analyticsvidhya.com/blog/2021/05/4-ways-to-evaluate-your-machine-learning-model-cross-validation-techniques-with-python-code/</a></p>
+<p>At the end of this post, there is a very good discussion on bias-variance tradeoff of the cross-validation methods.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Bias-variance-tradeoff-(optional)">Bias-variance tradeoff (optional)<a class="anchor-link" href="#Bias-variance-tradeoff-(optional)">&#182;</a></h3><p>Suppose we have a set of data from distribution $P(x,y)$ with the pattern (true function) $f(x)$ and a noise $\epsilon$ from a normal distribution of mean=0 and stddev=$\sigma$. We write it as $y=f(x)+\epsilon$. In a regression model, our goal is to find a $\hat{f}(x)$ such that the mean squared error between the estimate and the true value is minimized: MSE=$\mathbb{E}[(y-\hat{f}(x))^2]$.</p>
+<p>Suppose the estimation function $\hat{f}$ is learned from training data set $D=\{(x_0,y_0),\cdots,(x_n,y_n)\}$ that is sampled from distribution $P(x,y)$, we therefore write this estimation function as $\hat{f}(x,D)$, $\hat{f}$ for short. We may have two problems with the learning algorithm: 1. parameters of $\hat{f}$ is very sensitive to the training data set, any small fluctuation in the training data set causes big change in the parameters. This is called <strong>high variance</strong>: instead of finding the pattern in training data, $\hat{f}$ learned the random noise (overfitting). 2. although the parameters of $\hat{f}$ is insensitive to training data set, the estimated value is far from the actual. This is called <strong>high bias</strong>: the learning algorithm fails to find relations between independent and target variables (underfitting).</p>
+<p>There is obviously a tradeoff between bias and variance: when the bias of the estimator is high (for example always predicting the average of the target variable), the variance of the estimator's parameters across different training samples can be reduced (the average of target variable in each sample set is very similar, resulting in almost the same $\hat{f}(x,D)$ regardless of $D$).</p>
+<p>Below the formal definition of bias and vaiance:</p>
+<p>Bias $B=f-\mathbb{E}_D[\hat{f}]$ is how far the expected estimated value is from the true function. The <em>expected</em> value is the average across estimated values from different $\hat{f}$ learned from different training set samples $D$.</p>
+<p>Variance $V=\mathbb{E}_D[(\mathbb{E}_D[\hat{f}]-\hat{f})^2]$ indicates the spread of different estimated functions from different training set samples $D$ (how far each estimated value is to the average estimate from all estimated functions).</p>
+<p>With these definitions, we can rewrite the MSE into:</p>
+<p>$\text{MSE}=\mathbb{E}_D[(y-\hat{f}(x,D))^2]=\mathbb{E}_D[(f+\epsilon-\hat{f})^2]=\mathbb{E}_D[(f+\epsilon-\hat{f}+\mathbb{E}_D[\hat{f}]-\mathbb{E}_D[\hat{f}])^2]\\
+=\mathbb{E}_D[(B+(\mathbb{E}_D[\hat{f}]-\hat{f})+\epsilon)^2]\\
+=\mathbb{E}_D[B^2+(\mathbb{E}_D[\hat{f}]-\hat{f})^2+\epsilon^2+2\epsilon B+2\epsilon (\mathbb{E}_D[\hat{f}]-\hat{f})+2B(\mathbb{E}_D[\hat{f}]-\hat{f})]\\
+=\mathbb{E}_D[B^2] + V + \mathbb{E}_D[\epsilon^2] + 2\mathbb{E}_D[\epsilon B] + 2\mathbb{E}_D[\epsilon (\mathbb{E}_D[\hat{f}]-\hat{f})] + 2\mathbb{E}_D[B(\mathbb{E}_D[\hat{f}]-\hat{f})]$</p>
+<p>We analyze the elements one by one:</p>
+<ol>
+<li><p>$\mathbb{E}_D[B^2]=\mathbb{E}_D[f^2+(\mathbb{E}_D[\hat{f}])^2-2f\mathbb{E}_D[\hat{f}]]$</p>
+<p>Since the true function $f$ is independent of sampling $D$, $\mathbb{E}[f]=f,\mathbb{E}[f^2]=f^2$.</p>
+<p>Obviously, $\mathbb{E}[\mathbb{E}[\hat{f}]]=\mathbb{E}[\hat{f}],\mathbb{E}[(\mathbb{E}[\hat{f}])^2]=(\mathbb{E}[\hat{f}])^2$.</p>
+<p>Therefore $\mathbb{E}_D[B^2] = B^2$.</p>
+</li>
+<li><p>because $\epsilon$ is independent from $\hat{f}$, the expectation of the product of two random variables is equal to the product of two expectations: $\mathbb{E}[\epsilon (\mathbb{E}_D[\hat{f}]-\hat{f})]=\mathbb{E}[\epsilon]\mathbb{E}[(\mathbb{E}_D[\hat{f}]-\hat{f})]$, and because $\epsilon$ is a normal distribution with mean=0, $\mathbb{E}[\epsilon]=0$,</p>
+<p>Therefore $\mathbb{E}_D[\epsilon (\mathbb{E}_D[\hat{f}]-\hat{f})]=0$. For the same reason $\mathbb{E}_D[\epsilon B]=0$.</p>
+</li>
+<li><p>$\mathbb{E}_D[B(\mathbb{E}_D[\hat{f}]-\hat{f})]=\mathbb{E}[f\mathbb{E}[\hat{f}]-(\mathbb{E}[\hat{f}])^2-f\hat{f}+\mathbb{E}[\hat{f}]\hat{f}]=f\mathbb{E}[\hat{f}]-(\mathbb{E}[\hat{f}])^2-f\mathbb{E}[\hat{f}]+(\mathbb{E}[\hat{f}])^2=0$</p>
+</li>
+<li><p>since the variance of any random variable $\text{Var}(x)=\mathbb{E}[(x-\mathbb{E}[x])^2] = \mathbb{E}[x^2+(\mathbb{E}[x])^2-2x\mathbb{E}[x]]=\mathbb{E}[x^2] + (\mathbb{E}[x])^2 - 2(\mathbb{E}[x])^2$,</p>
+<p>we have $\text{Var}(\epsilon)=\mathbb{E}_D[\epsilon^2]-\mathbb{E}_D[\epsilon]^2=\mathbb{E}_D[\epsilon^2]=\sigma^2$.</p>
+</li>
+</ol>
+<p>To summarize:</p>
+<p>$\text{MSE}=B^2+V+\sigma^2$</p>
+<p>This is the bias and variance decomposition of MSE.</p>
 
 </div>
 </div>
